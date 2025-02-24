@@ -10,7 +10,6 @@ export default function Keypad({ usedKeys }) {
       bubbles: true,
     });
     document.dispatchEvent(event);
-    console.log(letter);
   };
 
   useEffect(() => {
@@ -36,6 +35,9 @@ export default function Keypad({ usedKeys }) {
             </div>
           );
         })}
+      <div className="gray enter" onClick={() => handlepress("Enter")}>
+        Enter
+      </div>
     </div>
   );
 }
