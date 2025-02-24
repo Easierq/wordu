@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Wordle from "./components/Wordle";
+import Gmodal from "./components/Gmodal";
 
 function App() {
   const [solution, setSolution] = useState(null);
+  const [modal, setModal] = useState(true);
 
   useEffect(() => {
     fetch("https://tvapple.vercel.app/api/solutions")
@@ -15,10 +17,13 @@ function App() {
   }, [setSolution]);
 
   return (
-    <div className="App">
-      <h1>Wordee</h1>
-      {solution && <Wordle solution={solution} />}
-    </div>
+    <>
+      {modal && <Gmodal setModal={setModal} />}
+      <div className="App">
+        <h1>Wordee</h1>
+        {solution && <Wordle solution={solution} />}
+      </div>
+    </>
   );
 }
 
